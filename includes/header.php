@@ -19,7 +19,7 @@ $page_title = $page_title ?? 'BU Bank Ltd — Bank Loan Management System';
 <header class="site-header">
   <div class="container">
     <a href="<?= $base_path ?>index.php" class="brand">
-      <span class="mark"><img src="assets/images/logo.png" alt="BU Bank Logo" ></span>
+      <span class="mark"><img src="<?= $base_path ?>assets/images/logo.png" alt="BU Bank Logo"></span>
       <span>BU Bank LTD<span class="tag">Online Loan System</span></span>
     </a>
     <nav class="main-nav">

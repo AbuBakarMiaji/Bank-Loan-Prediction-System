@@ -66,6 +66,12 @@ function ensure_schema_migrations(PDO $db): void {
         if (!in_array('total_payment', $columns)) {
             $db->exec("ALTER TABLE loans ADD COLUMN total_payment DECIMAL(14,2) NOT NULL DEFAULT 0.00 AFTER total_interest");
         }
+        if (!in_array('rejection_reason', $columns)) {
+            $db->exec("ALTER TABLE loans ADD COLUMN rejection_reason TEXT NULL AFTER status");
+        }
+        if (!in_array('reviewed_at', $columns)) {
+            $db->exec("ALTER TABLE loans ADD COLUMN reviewed_at DATETIME NULL AFTER rejection_reason");
+        }
     } catch (Throwable $t) {
         // Table might not exist yet if database.sql hasn't been imported
     }
