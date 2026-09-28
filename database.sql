@@ -19,13 +19,29 @@ CREATE TABLE IF NOT EXISTS users (
 ) ENGINE=InnoDB;
 
 -- ---------------------------------------------------------
+-- System settings (e.g. interest rate set by admin)
+-- ---------------------------------------------------------
+CREATE TABLE IF NOT EXISTS settings (
+    setting_key   VARCHAR(50)  PRIMARY KEY,
+    setting_value VARCHAR(255) NOT NULL
+) ENGINE=InnoDB;
+
+INSERT INTO settings (setting_key, setting_value) VALUES ('annual_interest_rate', '8.50')
+ON DUPLICATE KEY UPDATE setting_value = setting_value;
+
+-- ---------------------------------------------------------
 -- Loan applications + prediction results
 -- ---------------------------------------------------------
 CREATE TABLE IF NOT EXISTS loans (
     id                  INT AUTO_INCREMENT PRIMARY KEY,
     user_id             INT NOT NULL,
     loan_amount         DECIMAL(14,2) NOT NULL,
-    loan_term_months    INT NOT NULL,
+    interest_rate       DECIMAL(5,2)  NOT NULL DEFAULT 8.50,
+    loan_term_years     INT           NOT NULL DEFAULT 1,
+    loan_term_months    INT           NOT NULL,
+    monthly_payment     DECIMAL(14,2) NOT NULL DEFAULT 0.00,
+    total_interest      DECIMAL(14,2) NOT NULL DEFAULT 0.00,
+    total_payment       DECIMAL(14,2) NOT NULL DEFAULT 0.00,
     applicant_income    DECIMAL(14,2) NOT NULL,
     coapplicant_income  DECIMAL(14,2) NOT NULL DEFAULT 0,
     credit_history      TINYINT(1) NOT NULL DEFAULT 1,
@@ -33,7 +49,7 @@ CREATE TABLE IF NOT EXISTS loans (
     education           ENUM('Graduate','Not Graduate') NOT NULL DEFAULT 'Graduate',
     self_employed       ENUM('Yes','No') NOT NULL DEFAULT 'No',
     property_area       ENUM('Urban','Semiurban','Rural') NOT NULL DEFAULT 'Urban',
-    prediction_result    ENUM('Approved','Rejected') DEFAULT NULL,
+    prediction_result   ENUM('Approved','Rejected') DEFAULT NULL,
     prediction_confidence DECIMAL(5,2) DEFAULT NULL,
     status              ENUM('Pending','Approved','Rejected') NOT NULL DEFAULT 'Pending',
     created_at          DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -54,3 +70,4 @@ VALUES (
   'admin'
 )
 ON DUPLICATE KEY UPDATE email = email;
+

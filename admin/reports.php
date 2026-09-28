@@ -27,7 +27,7 @@ $byEducation = $db->query(
 )->fetchAll();
 
 $base_path = '../';
-$page_title = 'Reports — Ledger';
+$page_title = 'Reports — Ledger Admin';
 include '../includes/header.php';
 ?>
 
@@ -50,23 +50,23 @@ include '../includes/header.php';
     <div class="page-head">
       <div>
         <div class="eyebrow">Admin module · Reports</div>
-        <h1>Portfolio analytics</h1>
-        <p>Approval trends and exposure across every application on record.</p>
+        <h1>Portfolio Analytics</h1>
+        <p>Approval trends and exposure across every application on record (in BDT ৳).</p>
       </div>
     </div>
 
     <div class="stat-grid">
-      <div class="stat-card"><div class="label">Approval rate</div><div class="value sage"><?= $approvalRate ?>%</div></div>
-      <div class="stat-card"><div class="label">Average loan amount</div><div class="value">$<?= number_format($avgAmount, 0) ?></div></div>
-      <div class="stat-card"><div class="label">Approved exposure</div><div class="value brass">$<?= number_format($totalExposure, 0) ?></div></div>
-      <div class="stat-card"><div class="label">Total applications</div><div class="value"><?= $totalLoans ?></div></div>
+      <div class="stat-card"><div class="label">Approval Rate</div><div class="value sage"><?= $approvalRate ?>%</div></div>
+      <div class="stat-card"><div class="label">Average Loan Amount</div><div class="value">৳<?= number_format($avgAmount, 0) ?></div></div>
+      <div class="stat-card"><div class="label">Approved Exposure</div><div class="value brass">৳<?= number_format($totalExposure, 0) ?></div></div>
+      <div class="stat-card"><div class="label">Total Applications</div><div class="value"><?= $totalLoans ?></div></div>
     </div>
 
     <div class="table-card" style="margin-bottom:24px;">
-      <div class="table-head"><h3>By property area</h3></div>
+      <div class="table-head"><h3>By Property Area</h3></div>
       <?php if ($byArea): ?>
         <table>
-          <thead><tr><th>Property area</th><th>Applications</th><th>Approved</th><th>Approval rate</th></tr></thead>
+          <thead><tr><th>Property Area</th><th>Applications</th><th>Approved</th><th>Approval Rate</th></tr></thead>
           <tbody>
             <?php foreach ($byArea as $row): $rate = $row['total'] ? round($row['approved'] / $row['total'] * 100, 1) : 0; ?>
               <tr>
@@ -84,10 +84,10 @@ include '../includes/header.php';
     </div>
 
     <div class="table-card">
-      <div class="table-head"><h3>By education</h3></div>
+      <div class="table-head"><h3>By Education</h3></div>
       <?php if ($byEducation): ?>
         <table>
-          <thead><tr><th>Education</th><th>Applications</th><th>Approved</th><th>Approval rate</th></tr></thead>
+          <thead><tr><th>Education</th><th>Applications</th><th>Approved</th><th>Approval Rate</th></tr></thead>
           <tbody>
             <?php foreach ($byEducation as $row): $rate = $row['total'] ? round($row['approved'] / $row['total'] * 100, 1) : 0; ?>
               <tr>
