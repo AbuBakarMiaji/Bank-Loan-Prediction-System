@@ -17,7 +17,7 @@ include 'includes/header.php';
     <img src="assets/images/slider1.jpg" alt="Modern Banking Headquarters" class="slide-bg">
     <div class="slide-overlay"></div>
     <div class="slide-copy slide-center">
-      <div class="eyebrow">Smart Banking · Instant Evaluation</div>
+     
       <h1>Every loan decision, <em>transparent &amp; accelerated</em>.</h1>
       <p class="lede">BU Bank Ltd digitizes account opening, loan application, and instant eligibility prediction powered by 5 key financial indicators.</p>
       <div class="hero-actions">
@@ -32,7 +32,7 @@ include 'includes/header.php';
     <img src="assets/images/slider2.jpg" alt="Financial Analytics & AI Scoring" class="slide-bg">
     <div class="slide-overlay"></div>
     <div class="slide-copy slide-center">
-      <div class="eyebrow">Automated Prediction Engine</div>
+     
       <h1>Five financial signals, <em>one clear result</em>.</h1>
       <p class="lede">Every application is scored instantly upon submission with a plain-language confidence breakdown of income, debt ratio, and credit history.</p>
       <div class="hero-actions">
@@ -47,7 +47,7 @@ include 'includes/header.php';
     <img src="assets/images/slider3.jpg" alt="Customer Approval Success" class="slide-bg">
     <div class="slide-overlay"></div>
     <div class="slide-copy slide-center">
-      <div class="eyebrow">Customer First · Fast Approvals</div>
+      
       <h1>Empowering your personal &amp; <em>business growth</em>.</h1>
       <p class="lede">Whether you are purchasing a home, expanding an SME, or consolidating debt, our tailored credit solutions support your ambition.</p>
       <div class="hero-actions">
@@ -62,7 +62,7 @@ include 'includes/header.php';
     <img src="assets/images/slider1.jpg" alt="Admin & Portfolio Analytics" class="slide-bg">
     <div class="slide-overlay"></div>
     <div class="slide-copy slide-center">
-      <div class="eyebrow">Admin &amp; Portfolio Analytics</div>
+    
       <h1>Complete credit oversight, <em>at a glance</em>.</h1>
       <p class="lede">Administrators can review loan applications, filter customer profiles, and monitor real-time approval ratios across all regions.</p>
       <div class="hero-actions">
@@ -90,7 +90,7 @@ include 'includes/header.php';
 <section class="section alt" id="guidance">
   <div class="container">
     <div class="section-head text-center">
-      <div class="eyebrow">Banking Guide</div>
+     
       <h2>How to Use BU Bank Ltd System</h2>
       <p>Follow these simple steps to open your account, request credit, and get instant eligibility decisions.</p>
     </div>
@@ -138,7 +138,7 @@ include 'includes/header.php';
 <section class="section" id="governor-messages">
   <div class="container">
     <div class="section-head text-center">
-      <div class="eyebrow">Executive Leadership</div>
+      
       <h2>Leadership &amp; Governance Messages</h2>
       <p>Perspectives from our Managing Director and Central Bank Leadership on digital banking and ethical credit access.</p>
     </div>
@@ -191,7 +191,7 @@ include 'includes/header.php';
 <section class="section alt" id="services">
   <div class="container">
     <div class="section-head text-center">
-      <div class="eyebrow">Banking Solutions</div>
+     
       <h2>Our Core Financial Services</h2>
       <p>Comprehensive banking and loan services tailored for individuals, entrepreneurs, and institutions.</p>
     </div>

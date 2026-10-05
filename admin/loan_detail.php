@@ -185,7 +185,7 @@ include '../includes/header.php';
   <main class="main-content">
     <div class="page-head">
       <div>
-        <div class="eyebrow">Admin module &middot; Loan Application Full Details</div>
+        
         <h1>Application #<?= str_pad($loan_id, 5, '0', STR_PAD_LEFT) ?></h1>
         <p>Submitted by <strong><?= htmlspecialchars($loan['full_name']) ?></strong> on <?= date('F j, Y \a\t g:i A', strtotime($loan['created_at'])) ?></p>
       </div>
@@ -256,7 +256,7 @@ include '../includes/header.php';
 
       <!-- CUSTOMER INFO -->
       <div class="detail-card">
-        <div class="detail-card-header">&#128100; Customer Information</div>
+        <div class="detail-card-header">Customer Information</div>
         <div class="detail-card-body">
           <div class="field-row">
             <span class="field-label">Full Name</span>
@@ -286,7 +286,7 @@ include '../includes/header.php';
 
       <!-- LOAN FINANCIAL DETAILS -->
       <div class="detail-card">
-        <div class="detail-card-header">&#128176; Loan Financial Details (BDT &#2547;)</div>
+        <div class="detail-card-header"> Loan Financial Details (BDT)</div>
         <div class="detail-card-body">
           <div class="field-row">
             <span class="field-label">Requested Amount</span>
@@ -317,7 +317,7 @@ include '../includes/header.php';
 
       <!-- APPLICANT FINANCIAL PROFILE -->
       <div class="detail-card">
-        <div class="detail-card-header">&#128202; Applicant Financial Profile</div>
+        <div class="detail-card-header"> Applicant Financial Profile</div>
         <div class="detail-card-body">
           <div class="field-row">
             <span class="field-label">Applicant Monthly Income</span>
@@ -360,7 +360,7 @@ include '../includes/header.php';
 
       <!-- PERSONAL & PROPERTY PROFILE -->
       <div class="detail-card">
-        <div class="detail-card-header">&#127968; Personal &amp; Property Profile</div>
+        <div class="detail-card-header"> Personal &amp; Property Profile</div>
         <div class="detail-card-body">
           <div class="field-row">
             <span class="field-label">Education Level</span>
@@ -386,7 +386,7 @@ include '../includes/header.php';
             <span class="field-label">Property Area</span>
             <span class="field-value normal">
               <?php
-              $area_icons = ['Urban' => '&#127749;', 'Semiurban' => '&#127960;', 'Rural' => '&#127807;'];
+              $area_icons = ['Urban' => '', 'Semiurban' => '', 'Rural' => ''];
               $icon = $area_icons[$loan['property_area']] ?? '&#128205;';
               ?>
               <?= $icon ?> <?= htmlspecialchars($loan['property_area']) ?>
@@ -412,7 +412,7 @@ include '../includes/header.php';
     <!-- AI PREDICTION ANALYSIS FULL -->
     <div class="detail-card" style="margin-bottom:32px;">
       <div class="detail-card-header" style="background:linear-gradient(90deg,var(--navy-800),var(--navy-700));">
-        &#129302; AI / ML Eligibility Prediction Analysis
+        AI / ML Eligibility Prediction Analysis
       </div>
       <div class="detail-card-body">
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:24px;flex-wrap:wrap;">
@@ -438,52 +438,7 @@ include '../includes/header.php';
         </div>
 
         <!-- COMPLETE DATASET TABLE -->
-        <div style="border-top:1px solid var(--line);padding-top:20px;">
-          <div style="font-size:.78rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:14px;font-weight:700;">
-            &#128203; Complete Application Fields (Dataset Reference)
-          </div>
-          <div style="overflow-x:auto;">
-            <table style="width:100%;font-size:.85rem;border-collapse:collapse;">
-              <thead>
-                <tr style="background:var(--paper);">
-                  <th style="padding:9px 14px;text-align:left;font-size:.72rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:.06em;border-bottom:2px solid var(--line);">Field Label</th>
-                  <th style="padding:9px 14px;text-align:left;font-size:.72rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:.06em;border-bottom:2px solid var(--line);">Submitted Value</th>
-                  <th style="padding:9px 14px;text-align:left;font-size:.72rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:.06em;border-bottom:2px solid var(--line);">Dataset Column</th>
-                </tr>
-              </thead>
-              <tbody>
-                <?php
-                $dataset_fields = [
-                    ['Applicant Monthly Income',     '&#2547;' . number_format($loan['applicant_income'], 2),      'ApplicantIncome'],
-                    ['Co-Applicant Monthly Income',  '&#2547;' . number_format($loan['coapplicant_income'], 2),    'CoapplicantIncome'],
-                    ['Loan Amount (BDT)',             '&#2547;' . number_format($loan['loan_amount'], 2),           'LoanAmount'],
-                    ['Loan Amount Term (Months)',     $loan['loan_term_months'] . ' Months',                       'Loan_Amount_Term'],
-                    ['Interest Rate (per annum)',     number_format($loan['interest_rate'], 2) . '% / year',       'interest_rate'],
-                    ['Loan Term (Years)',             $loan['loan_term_years'] . ' Years',                         'loan_term_years'],
-                    ['Monthly EMI Payment',          '&#2547;' . number_format($loan['monthly_payment'], 2),      'monthly_payment'],
-                    ['Total Interest Payable',       '&#2547;' . number_format($loan['total_interest'], 2),       'total_interest'],
-                    ['Total Repayment Amount',       '&#2547;' . number_format($loan['total_payment'], 2),        'total_payment'],
-                    ['Credit History',               ($loan['credit_history'] == 1 ? 'Clean Record (1)' : 'Poor / No Record (0)'), 'Credit_History'],
-                    ['Number of Dependents',         $loan['dependents'] . ($loan['dependents'] >= 3 ? '+' : ''), 'Dependents'],
-                    ['Education Level',              htmlspecialchars($loan['education']),                         'Education'],
-                    ['Self Employed',                htmlspecialchars($loan['self_employed']),                     'Self_Employed'],
-                    ['Property Area',                htmlspecialchars($loan['property_area']),                     'Property_Area'],
-                    ['ML Prediction Result',         htmlspecialchars($loan['prediction_result'] ?? 'N/A'),        'Loan_Status (target)'],
-                    ['Prediction Confidence',        number_format($loan['prediction_confidence'] ?? 0, 1) . '%', 'prediction_confidence'],
-                    ['Admin Approval Status',        htmlspecialchars($loan['status']),                            'status'],
-                ];
-                foreach ($dataset_fields as $i => [$label, $value, $col_name]):
-                ?>
-                <tr style="border-bottom:1px solid var(--line);<?= ($i % 2 === 0) ? 'background:#fafbf9;' : '' ?>">
-                  <td style="padding:9px 14px;font-weight:600;color:var(--text);"><?= $label ?></td>
-                  <td style="padding:9px 14px;font-family:var(--mono);font-weight:700;color:var(--navy-900);"><?= $value ?></td>
-                  <td style="padding:9px 14px;font-family:var(--mono);font-size:.78rem;color:var(--text-muted);background:#f5f7f3;"><?= htmlspecialchars($col_name) ?></td>
-                </tr>
-                <?php endforeach; ?>
-              </tbody>
-            </table>
-          </div>
-        </div>
+        
       </div>
     </div>
 

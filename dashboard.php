@@ -114,7 +114,7 @@ include 'includes/header.php';
   <main class="main-content">
     <div class="page-head">
       <div>
-        <div class="eyebrow">User module &middot; Customer dashboard</div>
+       
         <h1>Welcome, <?= htmlspecialchars(explode(' ', $user['full_name'])[0]) ?></h1>
         <p>Overview of your submitted loan applications and approval status.</p>
       </div>
@@ -124,7 +124,7 @@ include 'includes/header.php';
     <!-- ✅ CONGRATULATIONS BANNER — show if any loan approved -->
     <?php if ($newly_approved): ?>
     <div class="congrats-banner">
-      <div class="congrats-icon">&#127881;</div>
+      
       <div class="congrats-body">
         <div class="congrats-title">Congratulations! Your loan has been approved!</div>
         <div class="congrats-sub">

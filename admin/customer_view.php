@@ -107,7 +107,7 @@ include '../includes/header.php';
   <main class="main-content">
     <div class="page-head">
       <div>
-        <div class="eyebrow">Admin module &middot; Customer Record</div>
+       
         <h1><?= htmlspecialchars($customer['full_name']) ?></h1>
         <p>Account #<?= str_pad($customer['id'], 5, '0', STR_PAD_LEFT) ?> &middot; Member since <?= date('F Y', strtotime($customer['created_at'])) ?></p>
       </div>

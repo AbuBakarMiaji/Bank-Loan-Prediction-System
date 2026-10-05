@@ -3,7 +3,7 @@
     <div class="footer-grid">
       <div class="footer-col">
         <div class="brand" style="margin-bottom:14px;">
-          <span class="mark"><img src="assets/images/logo.png" alt="BU Bank Logo" ></span>
+          <span class="mark"><img src="./assets/images/logo.png" alt="BU Bank Logo" ></span>
           <span>BU Bank LTD<span class="tag">Online Loan System</span></span>
         </div>
         <p>BU Bank Ltd is a digital-first banking &amp; automated loan platform committed to transparent credit evaluation, fast approvals, and financial empowerment.</p>

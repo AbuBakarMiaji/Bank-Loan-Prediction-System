@@ -33,8 +33,8 @@ include 'includes/header.php';
   <main class="main-content">
     <div class="page-head">
       <div>
-        <div class="eyebrow">Loan module · History</div>
-        <h1>Your Loan History (in BDT ৳)</h1>
+       
+        <h1>Your Loan History (in BDT)</h1>
         <p>Complete record of submitted applications, calculated repayment schedules, and admin approval status.</p>
       </div>
       <a href="loan_apply.php" class="btn btn-brass">Apply for a new loan</a>

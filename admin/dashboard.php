@@ -93,7 +93,7 @@ include '../includes/header.php';
   <main class="main-content">
     <div class="page-head">
       <div>
-        <div class="eyebrow">Admin module · Control Panel</div>
+        
         <h1>Portfolio &amp; Loan Approval Overview</h1>
         <p>Manage interest rates, review pending loan applications, and issue approvals/rejections.</p>
       </div>
@@ -130,7 +130,7 @@ include '../includes/header.php';
     <div class="card" style="padding:24px;margin-bottom:32px;background:var(--paper-raised);">
       <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;">
         <div>
-          <h3 style="margin:0 0 4px;font-size:1.1rem;">⚙️ Bank Interest Rate Settings</h3>
+          <h3 style="margin:0 0 4px;font-size:1.1rem;"> Bank Interest Rate Settings</h3>
           <p class="text-muted" style="margin:0;font-size:.88rem;">
             Set the global annual interest rate used in the loan calculator and customer application forms.
           </p>

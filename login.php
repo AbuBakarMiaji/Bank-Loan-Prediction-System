@@ -42,7 +42,7 @@ include 'includes/header.php';
 
 <div class="auth-wrap">
   <div class="card auth-card">
-    <div class="eyebrow">User module · Login</div>
+   
     <h1>Welcome back</h1>
     <p class="sub">Log in to your dashboard to apply for a loan or check a decision.</p>
 
@@ -66,7 +66,7 @@ include 'includes/header.php';
       <button type="submit" class="btn btn-brass btn-block">Log in</button>
     </form>
     <div class="auth-switch">New here? <a href="register.php">Open an account</a></div>
-    <p class="hint" style="text-align:center;margin-top:18px;">Admin demo login: admin@ledger.bank or admin@bubank.com / Admin@123</p>
+    <p class="hint" style="text-align:center;margin-top:18px;">Admin demo login: admin@bubank.com / Admin@123</p>
   </div>
 </div>
 

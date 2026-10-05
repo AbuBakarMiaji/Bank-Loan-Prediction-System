@@ -49,9 +49,9 @@ include '../includes/header.php';
   <main class="main-content">
     <div class="page-head">
       <div>
-        <div class="eyebrow">Admin module · Reports</div>
+      
         <h1>Portfolio Analytics</h1>
-        <p>Approval trends and exposure across every application on record (in BDT ৳).</p>
+        <p>Approval trends and exposure across every application on record (in BDT).</p>
       </div>
     </div>
 

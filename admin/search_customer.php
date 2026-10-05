@@ -42,7 +42,7 @@ include '../includes/header.php';
   <main class="main-content">
     <div class="page-head">
       <div>
-        <div class="eyebrow">Admin module · Search customer</div>
+       
         <h1>Find a customer</h1>
         <p>Look up any account by name, email, or account ID.</p>
       </div>

@@ -55,7 +55,7 @@ include 'includes/header.php';
 
 <div class="auth-wrap">
   <div class="card auth-card">
-    <div class="eyebrow">User module · Registration</div>
+   
     <h1>Open an account</h1>
     <p class="sub">Register once to apply for loans and track every decision.</p>
 
