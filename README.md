@@ -62,19 +62,30 @@ An administrator account is seeded automatically:
 
 Create a customer account any time via **Open an account** on the home page.
 
-## 5. How the prediction works
+## 5. Machine Learning Integration (Bank_Loan.ipynb)
 
-`includes/predict.php` implements a transparent, weighted scoring model over
-the same five signals described in the plan (credit history, income vs. loan
-amount/term, dependents, education, property area). It returns an
-Approved/Rejected result plus a confidence percentage and a breakdown of
-which factors pushed the score up or down — shown to the customer right
-after they apply, and logged with every record in `loans`.
+The prediction engine is powered directly by the trained Machine Learning model from `Bank_Loan(1).ipynb`:
 
-This keeps the whole system runnable on plain PHP with no Python/ML runtime.
-To connect a real trained model instead, replace the body of `predict_loan()`
-with an HTTP call to your model's inference endpoint (e.g. a Flask/FastAPI
-service or a cloud ML endpoint), keeping the same return shape.
+- **Selected Model:** `RandomForestClassifier` (100 estimators, random state 42).
+- **Notebook Evaluation Accuracy:** **92.0%** (vs 89.0% for Logistic Regression).
+- **Artifacts Location:**
+  - Trained Model: `model/loan_prediction_rf_model.pkl`
+  - Fitted Label Encoders: `model/loan_prediction_label_encoders_dict.pkl`
+  - Model Schema & Metadata: `model/model_metadata.json`
+- **Features Used (13 features):** `Age`, `Gender`, `Education`, `Person Income`, `Employee Experience`, `Home Onwership`, `Loan Amount`, `Loan Intent`, `Loan interest Rate`, `Loan percentage`, `Credit History`, `Credit Score`, `Previous Loan`.
+
+### How to Run the ML API Service:
+
+1. Double-click `start_ml_api.bat` OR run in terminal:
+   ```bash
+   python ml_api.py
+   ```
+   The Flask API will start on `http://127.0.0.1:5000`.
+
+2. In `predict.php`:
+   - Primary: PHP makes an HTTP POST request to `http://127.0.0.1:5000/predict`.
+   - Zero-Downtime Fallback: If the Flask service is not yet running, `predict.php` automatically invokes `predict_cli.py` via PHP subprocess execution to run the exact same trained model without failing.
+   - Response: Returns exact prediction (`Approved` or `Rejected`), confidence percentage, probability, and factor contributions.
 
 ## 6. Security notes for production use
 

@@ -62,6 +62,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // Prepare array for prediction engine
             $prediction_input = $old;
             $prediction_input['loan_term_months'] = $loan_term_months;
+            $prediction_input['interest_rate'] = $admin_interest_rate;
             $prediction = predict_loan($prediction_input);
 
             $db = get_db();
@@ -155,12 +156,20 @@ include 'includes/header.php';
         </div>
         <div>
           <h3 class="mt-0" style="margin-bottom:8px;">AI Eligibility Advisory: <?= $submitted_loan['prediction']['result'] ?> (<?= $submitted_loan['prediction']['confidence'] ?>% Confidence)</h3>
-          <div class="confidence-bar"><span style="width:<?= $submitted_loan['prediction']['confidence'] ?>%"></span></div>
-          <p class="text-muted" style="margin:8px 0 16px;font-size:.85rem;">
+          <p class="text-muted" style="margin:8px 0 12px;font-size:.85rem;">
             <?= $submitted_loan['prediction']['result'] === 'Approved'
-                ? 'AI prediction system indicates high eligibility probability based on financial parameters.'
-                : 'AI prediction system notes lower eligibility probability based on current income or credit criteria.' ?>
+                ? 'AI Random Forest model indicates high eligibility probability (' . $submitted_loan['prediction']['confidence'] . '% confidence) based on trained financial benchmarks.'
+                : 'AI Random Forest model notes elevated default probability (' . $submitted_loan['prediction']['confidence'] . '% confidence) based on trained financial criteria.' ?>
           </p>
+          <?php if (!empty($submitted_loan['prediction']['factors'])): ?>
+            <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px;">
+              <?php foreach ($submitted_loan['prediction']['factors'] as $factorKey => $factorVal): ?>
+                <span class="badge" style="background:rgba(0,0,0,0.05);color:var(--navy-900);font-size:.78rem;padding:4px 10px;border-radius:4px;border:1px solid var(--line);">
+                  <strong><?= htmlspecialchars($factorKey) ?>:</strong> <?= htmlspecialchars($factorVal) ?>
+                </span>
+              <?php endforeach; ?>
+            </div>
+          <?php endif; ?>
           <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;background:var(--paper);padding:14px;border-radius:6px;margin-bottom:16px;">
             <div><small class="text-muted" style="display:block;">Loan Amount</small><strong class="mono">৳<?= number_format($submitted_loan['loan_amount'], 2) ?></strong></div>
             <div><small class="text-muted" style="display:block;">Interest Rate</small><strong class="mono"><?= number_format($submitted_loan['interest_rate'], 2) ?>% / yr</strong></div>

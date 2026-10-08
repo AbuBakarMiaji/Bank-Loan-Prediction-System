@@ -64,7 +64,7 @@ CREATE TABLE IF NOT EXISTS loans (
 INSERT INTO users (full_name, email, phone, password_hash, role)
 VALUES (
   'System Administrator',
-  'admin@ledger.bank',
+  'admin@bubank.com',
   '0000000000',
   '$2y$10$ENx.jrW.zAFuNEphFFZpq.fH90ufg1RNsbfAOj.uDb8OR.pobyAq6',
   'admin'
